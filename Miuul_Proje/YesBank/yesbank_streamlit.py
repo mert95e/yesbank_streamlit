@@ -25,7 +25,7 @@ st.set_page_config(layout="wide")
 
 
 # using pandas library and 'read_csv' function to read YesBank_StockPrices csv file
-dataset = pd.read_csv("Miuul_Proje/YesBank/data_YesBank_StockPrices.csv")
+dataset = pd.read_csv("/Users/mert/Desktop/Miuul_DSMLBC_Codes/Miuul_Proje/YesBank/data_YesBank_StockPrices.csv")
 
 #tab_home, tab_vis, tab_model = st.tabs(["Ana Sayfa", "Grafikler", "Model"])
 tabs = ["Ana Sayfa", "Görsellestirme", "Tahminleme"]
@@ -137,6 +137,10 @@ if selected_tab == "Görsellestirme":
 
     y_pred_lasso = lasso_model.predict(X_test)
 
+# Add traces for actual and predicted data
+    fig.add_trace(go.Scatter(x=np.arange(len(y_test[0])), y=10 ** y_test[0], mode = 'lines', name = 'Actual'))
+    fig.add_trace(go.Scatter(x=np.arange(len(y_pred_lasso)), y=10 ** y_pred_lasso, mode = 'lines', name = 'Predicted'))
+
     # Update layout with desired properties
     fig.update_layout(
         title="Lasso Plotting Prediction vs Actual",
@@ -186,6 +190,10 @@ if selected_tab == "Görsellestirme":
 
     #Ridge Predication vs Actual (After Validification)
 
+    # Add traces for actual and predicted data
+    fig.add_trace(go.Scatter(x=np.arange(len(y_test[0])), y=10 ** y_test[0], mode = 'lines', name = 'Actual'))
+    fig.add_trace(go.Scatter(x=np.arange(len(y_pred_ridge)), y=10 ** y_pred_ridge, mode = 'lines', name = 'Predicted'))
+
     # Update layout with desired properties
     fig.update_layout(
         title="Ridge Plotting Prediction vs Actual",
@@ -233,6 +241,11 @@ if selected_tab == "Görsellestirme":
     y_elastic_pred = elastic_model.predict(X_test)
 
     #ElasticNet Predication vs Actual (After Validification)
+
+    # Add traces for actual and predicted data
+    fig.add_trace(go.Scatter(x=np.arange(len(y_test[0])), y=10 ** y_test[0], mode='lines', name='Actual'))
+    fig.add_trace(go.Scatter(x=np.arange(len(y_elastic_pred)), y=10 ** y_elastic_pred, mode='lines', name='Predicted'))
+
     # Update layout with desired properties
     fig.update_layout(
         title="Elastic Net Plotting Prediction vs Actual",
@@ -260,3 +273,4 @@ if selected_tab == "Görsellestirme":
     st.write(f"RMSE: {rmse}")
     st.write(f"MAE: {mae}")
     st.write(f"R-squared: {r2}")
+
