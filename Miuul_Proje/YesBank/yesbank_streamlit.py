@@ -25,7 +25,7 @@ st.set_page_config(layout="wide")
 
 
 # using pandas library and 'read_csv' function to read YesBank_StockPrices csv file
-dataset = pd.read_csv("/Users/mert/Desktop/Miuul_DSMLBC_Codes/Miuul_Proje/YesBank/data_YesBank_StockPrices.csv")
+dataset = pd.read_csv("Miuul_Proje/YesBank/data_YesBank_StockPrices.csv")
 
 #tab_home, tab_vis, tab_model = st.tabs(["Ana Sayfa", "Grafikler", "Model"])
 tabs = ["Ana Sayfa", "Görsellestirme", "Tahminleme"]
