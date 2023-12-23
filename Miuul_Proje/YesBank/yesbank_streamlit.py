@@ -28,12 +28,12 @@ st.set_page_config(layout="wide")
 dataset = pd.read_csv("Miuul_Proje/YesBank/data_YesBank_StockPrices.csv")
 
 #tab_home, tab_vis, tab_model = st.tabs(["Ana Sayfa", "Grafikler", "Model"])
-tabs = ["Ana Sayfa", "Görsellestirme", "Tahminleme"]
+tabs = ["Ana Sayfa", "Görsellestirme"]
 selected_tab = st.sidebar.radio("Select Tab", tabs)
 
 # TAB HOME
 if selected_tab == "Ana Sayfa":
-    st.header(" Yes Bank'ın Gelecekteki Hisse Fiyatı Tahmini ")
+    st.header(" Yes Bank'ın Hisse Fiyatlarının Analizi ")
     st.subheader("Veri Seti Hakkında:")
     st.markdown("Yes Bank, Hindistan finans alanında tanınmış bir bankadır. 2018'den beri Rana Kapoor'un "
                 "karıştığı dolandırıcılık davası nedeniyle haberlerde yer alıyor. Bu gerçeğe bağlı olarak,"
@@ -43,6 +43,25 @@ if selected_tab == "Ana Sayfa":
                 " bankanın kuruluşundan bu yana aylık hisse senedi fiyatlarını içermekte olup, her ayın kapanış,"
                 " başlangıç, en yüksek ve en düşük hisse senedi fiyatlarını içermektedir. Ana amaç hisse senedinin"
                 " ayın kapanış fiyatını tahmin etmektir.")
+
+    fig = go.Figure()
+
+    # Add traces for 'Close', 'Open', and 'High'
+    fig.add_trace(go.Scatter(x=dataset.index, y=dataset['Close'], mode='lines', name='Close'))
+    fig.add_trace(go.Scatter(x=dataset.index, y=dataset['Open'], mode='lines', name='Open'))
+    fig.add_trace(go.Scatter(x=dataset.index, y=dataset['High'], mode='lines', name='High'))
+
+    # Set layout parameters
+    fig.update_layout(title="Stock Prices",
+                      xaxis_title="Date",
+                      yaxis_title="Price",
+                      legend=dict(title="Legend"),
+                      height=500,
+                      width=800)
+
+    # Display the Plotly figure in Streamlit
+    st.plotly_chart(fig)
+
 
     # dataframe'i gösteriyor ekranda.
     st.dataframe(dataset, width=750)
