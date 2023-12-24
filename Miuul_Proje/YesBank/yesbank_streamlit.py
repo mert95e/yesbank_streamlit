@@ -53,7 +53,7 @@ if selected_tab == "Ana Sayfa":
 
     # Set layout parameters
     fig.update_layout(title="Stock Prices",
-                      xaxis_title="Date",
+                      xaxis_title="Month",
                       yaxis_title="Price",
                       legend=dict(title="Legend"),
                       height=500,
