@@ -35,14 +35,11 @@ selected_tab = st.sidebar.radio("Select Tab", tabs)
 if selected_tab == "Ana Sayfa":
     st.header(" Yes Bank'ın Hisse Fiyatlarının Analizi ")
     st.subheader("Veri Seti Hakkında:")
-    st.markdown("Yes Bank, Hindistan finans alanında tanınmış bir bankadır. 2018'den beri Rana Kapoor'un "
-                "karıştığı dolandırıcılık davası nedeniyle haberlerde yer alıyor. Bu gerçeğe bağlı olarak,"
-                " bunun şirketin hisse senedi fiyatlarını nasıl etkilediğini ve Zaman serisi modellerinin veya"
-                " diğer tahmine dayalı modellerin bu tür durumlara adalet sağlayıp sağlayamayacağını görmek ilginçti."
-                " Bu veri seti,"
-                " bankanın kuruluşundan bu yana aylık hisse senedi fiyatlarını içermekte olup, her ayın kapanış,"
-                " başlangıç, en yüksek ve en düşük hisse senedi fiyatlarını içermektedir. Ana amaç hisse senedinin"
-                " ayın kapanış fiyatını tahmin etmektir.")
+    st.markdown("Yes Bank, Hindistan finans alanında tanınmış bir bankadır. 2018'den beri Rana Kapoor'un karıştığı dolandırıcılık davası
+    nedeniyle haberlerde yer alıyor. Yes Bank'ın son yıllardaki finansal zorlukları, hisse senedi piyasasında önemli dalgalanmalara 
+    neden oldu. Bu projede, Yes Bank'ın hisse fiyatlarını derinlemesine analiz ediyoruz.
+
+    Bu projenin amacı, Yes Bank'ın hisse fiyatlarındaki tarihsel eğilimleri anlamak ve fiyat hareketlerini tahmin etmektir.")
 
     fig = go.Figure()
 
